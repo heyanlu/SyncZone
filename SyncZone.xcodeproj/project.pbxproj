@@ -14,6 +14,32 @@
 		67FF83C92C2FA70B00721457 /* SyncZoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83C82C2FA70B00721457 /* SyncZoneTests.swift */; };
 		67FF83D32C2FA70B00721457 /* SyncZoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83D22C2FA70B00721457 /* SyncZoneUITests.swift */; };
 		67FF83D52C2FA70B00721457 /* SyncZoneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83D42C2FA70B00721457 /* SyncZoneUITestsLaunchTests.swift */; };
+		67FF83E32C2FA81E00721457 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83E22C2FA81E00721457 /* IntroView.swift */; };
+		67FF83E52C2FAA7C00721457 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83E42C2FAA7C00721457 /* LoginView.swift */; };
+		67FF83E72C2FAA8F00721457 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83E62C2FAA8F00721457 /* AccountView.swift */; };
+		67FF83EC2C30BF7E00721457 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83EB2C30BF7E00721457 /* LocationView.swift */; };
+		67FF83EE2C30C9EA00721457 /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83ED2C30C9EA00721457 /* LocationRequestView.swift */; };
+		67FF83F02C30CA0900721457 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83EF2C30CA0900721457 /* LocationManager.swift */; };
+		67FF83FA2C320B4B00721457 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83F92C320B4B00721457 /* MainTabView.swift */; };
+		67FF83FC2C320D1B00721457 /* SyncTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83FB2C320D1B00721457 /* SyncTimeView.swift */; };
+		67FF83FE2C320D4100721457 /* ChatGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83FD2C320D4100721457 /* ChatGroupView.swift */; };
+		67FF84012C321FB200721457 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF84002C321FB200721457 /* User.swift */; };
+		67FF84032C321FC700721457 /* SyncTimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF84022C321FC700721457 /* SyncTimeGroup.swift */; };
+		67FF84052C321FD400721457 /* ChatGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF84042C321FD400721457 /* ChatGroup.swift */; };
+		67FF84072C32251600721457 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF84062C32251600721457 /* loginView.swift */; };
+		67FF84092C32252300721457 /* signUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF84082C32252300721457 /* signUpView.swift */; };
+		67FF840B2C32255A00721457 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF840A2C32255A00721457 /* OnBoardingView.swift */; };
+		67FF840D2C32258F00721457 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF840C2C32258F00721457 /* WelcomeView.swift */; };
+		67FF84102C327AF300721457 /* SZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF840F2C327AF300721457 /* SZButton.swift */; };
+		67FF84122C330E2400721457 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF84112C330E2400721457 /* InputFieldView.swift */; };
+		67FF84142C3312C200721457 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF84132C3312C200721457 /* LoginViewModel.swift */; };
+		67FF84162C3328FF00721457 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67FF84152C3328FF00721457 /* GoogleService-Info.plist */; };
+		67FF84182C3329B800721457 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67FF84172C3329B700721457 /* GoogleService-Info.plist */; };
+		67FF841B2C332C2A00721457 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 67FF841A2C332C2A00721457 /* FirebaseAuth */; };
+		67FF841D2C332C2A00721457 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 67FF841C2C332C2A00721457 /* FirebaseDatabase */; };
+		67FF841F2C332C2A00721457 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67FF841E2C332C2A00721457 /* FirebaseDatabaseSwift */; };
+		67FF84212C332C2A00721457 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 67FF84202C332C2A00721457 /* FirebaseFirestore */; };
+		67FF84232C332C2A00721457 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67FF84222C332C2A00721457 /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +70,28 @@
 		67FF83CE2C2FA70B00721457 /* SyncZoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyncZoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FF83D22C2FA70B00721457 /* SyncZoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncZoneUITests.swift; sourceTree = "<group>"; };
 		67FF83D42C2FA70B00721457 /* SyncZoneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncZoneUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		67FF83E22C2FA81E00721457 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		67FF83E42C2FAA7C00721457 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		67FF83E62C2FAA8F00721457 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		67FF83EB2C30BF7E00721457 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		67FF83ED2C30C9EA00721457 /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
+		67FF83EF2C30CA0900721457 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		67FF83F32C30CD0400721457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		67FF83F92C320B4B00721457 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		67FF83FB2C320D1B00721457 /* SyncTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncTimeView.swift; sourceTree = "<group>"; };
+		67FF83FD2C320D4100721457 /* ChatGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupView.swift; sourceTree = "<group>"; };
+		67FF84002C321FB200721457 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		67FF84022C321FC700721457 /* SyncTimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncTimeGroup.swift; sourceTree = "<group>"; };
+		67FF84042C321FD400721457 /* ChatGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroup.swift; sourceTree = "<group>"; };
+		67FF84062C32251600721457 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
+		67FF84082C32252300721457 /* signUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpView.swift; sourceTree = "<group>"; };
+		67FF840A2C32255A00721457 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		67FF840C2C32258F00721457 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		67FF840F2C327AF300721457 /* SZButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SZButton.swift; sourceTree = "<group>"; };
+		67FF84112C330E2400721457 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		67FF84132C3312C200721457 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		67FF84152C3328FF00721457 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67FF84172C3329B700721457 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +99,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67FF84232C332C2A00721457 /* FirebaseFirestoreSwift in Frameworks */,
+				67FF841F2C332C2A00721457 /* FirebaseDatabaseSwift in Frameworks */,
+				67FF84212C332C2A00721457 /* FirebaseFirestore in Frameworks */,
+				67FF841D2C332C2A00721457 /* FirebaseDatabase in Frameworks */,
+				67FF841B2C332C2A00721457 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +127,7 @@
 		67FF83AB2C2FA70900721457 = {
 			isa = PBXGroup;
 			children = (
+				67FF84172C3329B700721457 /* GoogleService-Info.plist */,
 				67FF83B62C2FA70900721457 /* SyncZone */,
 				67FF83C72C2FA70B00721457 /* SyncZoneTests */,
 				67FF83D12C2FA70B00721457 /* SyncZoneUITests */,
@@ -94,6 +148,11 @@
 		67FF83B62C2FA70900721457 /* SyncZone */ = {
 			isa = PBXGroup;
 			children = (
+				67FF84152C3328FF00721457 /* GoogleService-Info.plist */,
+				67FF83FF2C321FA200721457 /* Model */,
+				67FF83F62C31F9D200721457 /* Manager */,
+				67FF83F52C31F9B700721457 /* Views */,
+				67FF83F32C30CD0400721457 /* Info.plist */,
 				67FF83B72C2FA70900721457 /* SyncZoneApp.swift */,
 				67FF83B92C2FA70900721457 /* ContentView.swift */,
 				67FF83BB2C2FA70A00721457 /* Assets.xcassets */,
@@ -127,6 +186,78 @@
 			path = SyncZoneUITests;
 			sourceTree = "<group>";
 		};
+		67FF83E12C2FA7E000721457 /* OnBoardingView */ = {
+			isa = PBXGroup;
+			children = (
+				67FF83EB2C30BF7E00721457 /* LocationView.swift */,
+				67FF83E22C2FA81E00721457 /* IntroView.swift */,
+				67FF83E42C2FAA7C00721457 /* LoginView.swift */,
+				67FF83E62C2FAA8F00721457 /* AccountView.swift */,
+				67FF83ED2C30C9EA00721457 /* LocationRequestView.swift */,
+				67FF840A2C32255A00721457 /* OnBoardingView.swift */,
+				67FF840C2C32258F00721457 /* WelcomeView.swift */,
+			);
+			path = OnBoardingView;
+			sourceTree = "<group>";
+		};
+		67FF83F52C31F9B700721457 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				67FF840E2C3258CC00721457 /* backup */,
+				67FF83F82C3209B700721457 /* ChatGroupView */,
+				67FF83F72C32098E00721457 /* SyncTimeView */,
+				67FF83E12C2FA7E000721457 /* OnBoardingView */,
+				67FF83F92C320B4B00721457 /* MainTabView.swift */,
+				67FF840F2C327AF300721457 /* SZButton.swift */,
+				67FF84112C330E2400721457 /* InputFieldView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		67FF83F62C31F9D200721457 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				67FF83EF2C30CA0900721457 /* LocationManager.swift */,
+				67FF84132C3312C200721457 /* LoginViewModel.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		67FF83F72C32098E00721457 /* SyncTimeView */ = {
+			isa = PBXGroup;
+			children = (
+				67FF83FB2C320D1B00721457 /* SyncTimeView.swift */,
+			);
+			path = SyncTimeView;
+			sourceTree = "<group>";
+		};
+		67FF83F82C3209B700721457 /* ChatGroupView */ = {
+			isa = PBXGroup;
+			children = (
+				67FF83FD2C320D4100721457 /* ChatGroupView.swift */,
+			);
+			path = ChatGroupView;
+			sourceTree = "<group>";
+		};
+		67FF83FF2C321FA200721457 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				67FF84002C321FB200721457 /* User.swift */,
+				67FF84022C321FC700721457 /* SyncTimeGroup.swift */,
+				67FF84042C321FD400721457 /* ChatGroup.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		67FF840E2C3258CC00721457 /* backup */ = {
+			isa = PBXGroup;
+			children = (
+				67FF84082C32252300721457 /* signUpView.swift */,
+				67FF84062C32251600721457 /* loginView.swift */,
+			);
+			path = backup;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +274,13 @@
 			dependencies = (
 			);
 			name = SyncZone;
+			packageProductDependencies = (
+				67FF841A2C332C2A00721457 /* FirebaseAuth */,
+				67FF841C2C332C2A00721457 /* FirebaseDatabase */,
+				67FF841E2C332C2A00721457 /* FirebaseDatabaseSwift */,
+				67FF84202C332C2A00721457 /* FirebaseFirestore */,
+				67FF84222C332C2A00721457 /* FirebaseFirestoreSwift */,
+			);
 			productName = SyncZone;
 			productReference = 67FF83B42C2FA70900721457 /* SyncZone.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +353,9 @@
 				Base,
 			);
 			mainGroup = 67FF83AB2C2FA70900721457;
+			packageReferences = (
+				67FF84192C332C2A00721457 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 67FF83B52C2FA70900721457 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,7 +373,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				67FF83BF2C2FA70A00721457 /* Preview Assets.xcassets in Resources */,
+				67FF84182C3329B800721457 /* GoogleService-Info.plist in Resources */,
 				67FF83BC2C2FA70A00721457 /* Assets.xcassets in Resources */,
+				67FF84162C3328FF00721457 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +401,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				67FF83BA2C2FA70900721457 /* ContentView.swift in Sources */,
+				67FF83E52C2FAA7C00721457 /* LoginView.swift in Sources */,
+				67FF83EC2C30BF7E00721457 /* LocationView.swift in Sources */,
+				67FF84072C32251600721457 /* loginView.swift in Sources */,
+				67FF840B2C32255A00721457 /* OnBoardingView.swift in Sources */,
+				67FF84102C327AF300721457 /* SZButton.swift in Sources */,
+				67FF84052C321FD400721457 /* ChatGroup.swift in Sources */,
+				67FF83E72C2FAA8F00721457 /* AccountView.swift in Sources */,
+				67FF83F02C30CA0900721457 /* LocationManager.swift in Sources */,
+				67FF83FE2C320D4100721457 /* ChatGroupView.swift in Sources */,
+				67FF83FC2C320D1B00721457 /* SyncTimeView.swift in Sources */,
 				67FF83B82C2FA70900721457 /* SyncZoneApp.swift in Sources */,
+				67FF84012C321FB200721457 /* User.swift in Sources */,
+				67FF84032C321FC700721457 /* SyncTimeGroup.swift in Sources */,
+				67FF840D2C32258F00721457 /* WelcomeView.swift in Sources */,
+				67FF84092C32252300721457 /* signUpView.swift in Sources */,
+				67FF83E32C2FA81E00721457 /* IntroView.swift in Sources */,
+				67FF83FA2C320B4B00721457 /* MainTabView.swift in Sources */,
+				67FF84122C330E2400721457 /* InputFieldView.swift in Sources */,
+				67FF83EE2C30C9EA00721457 /* LocationRequestView.swift in Sources */,
+				67FF84142C3312C200721457 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +587,9 @@
 				DEVELOPMENT_TEAM = 6W9ZTVR4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SyncZone/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App need location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to access location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +619,9 @@
 				DEVELOPMENT_TEAM = 6W9ZTVR4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SyncZone/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App need location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to access location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -588,6 +756,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67FF84192C332C2A00721457 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67FF841A2C332C2A00721457 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67FF84192C332C2A00721457 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		67FF841C2C332C2A00721457 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67FF84192C332C2A00721457 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		67FF841E2C332C2A00721457 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67FF84192C332C2A00721457 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		67FF84202C332C2A00721457 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67FF84192C332C2A00721457 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		67FF84222C332C2A00721457 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67FF84192C332C2A00721457 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 67FF83AC2C2FA70900721457 /* Project object */;
 }
