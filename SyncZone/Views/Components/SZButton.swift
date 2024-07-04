@@ -18,12 +18,13 @@ struct SZButton: View {
             action()
         } label: {
             Text(title)
-                .frame(maxWidth: .infinity)
+                .font(.headline)
+                .foregroundColor(.white)
                 .frame(height: 55)
-                .foregroundColor(foregroundColor)
-                .background(background)
-                .clipShape(Capsule())
-                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color("colorPrimary"))
+                .cornerRadius(10)
+                .padding(.top, 10)
         }
     }
 }

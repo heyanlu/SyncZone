@@ -6,15 +6,18 @@
 //
 import Foundation
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 //Function of login 
-class LoginViewModel: ObservableObject {
-    @Published var onboardingState: String = "login"
+class OnBoardingViewModel: ObservableObject {
+    @Published var onboardingState: String = "welcome"
     
-//    @Published var username: String = ""
+    @Published var name: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var checkPassword: String = ""
+   
     
 //    @Published var showLocationRequest: Bool = false
     
@@ -31,6 +34,18 @@ class LoginViewModel: ObservableObject {
     let socialIcons = ["google", "wechat", "linkedin"]
     let buttons = ["Login", "SignUp", "Submit"]
     
+    
+    func handleContinue() {
+       DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+           self.onContinue()
+       }
+   }
+    
+    func onContinue() {
+        self.onboardingState = "login"
+    }
+   
+    
     func handleLoginButton() {
         withAnimation(.spring()) {
             onboardingState = "login"
@@ -43,19 +58,43 @@ class LoginViewModel: ObservableObject {
         }
     }
     
-    func handleSubmitButton() {
-        if validate() {
-            currentEmail = email
-            currentPassword = password
-            isAuthenticated = true
+    func Login() {
+        guard validate() else {
+            return
+        }
             
-            //request user location after sign up 
-            if onboardingState == "signUp" {
-                showLocationRequest = true
+        Auth.auth().signIn(withEmail: email, password: password)
+            
+    }
+    
+    func SignUp() {
+        guard validate() else {
+            return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password) {[weak self] result, error in
+            guard let userId = result?.user.uid else {
+                return
             }
+            self?.insertUserRecord(id: userId)
             
         }
     }
+    
+    private func insertUserRecord(id: String) {
+        let newUser = User(id: id, 
+                           name: name,
+                           email: email,
+                           joined: Date().timeIntervalSince1970)
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users")
+            .document(id)
+            .setData(newUser.asDictionary())
+
+    }
+    
     
     private func validate() -> Bool {
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty || !password.trimmingCharacters(in: .whitespaces).isEmpty else {
@@ -75,8 +114,13 @@ class LoginViewModel: ObservableObject {
         }
         
         if onboardingState == "signUp" {
-            guard password == checkPassword else {
-                showAlert(title: "Passwords do not match.")
+            guard !name.trimmingCharacters(in: .whitespaces).isEmpty else {
+                showAlert(title: "Please input your email.")
+                return false
+            }
+            
+            guard password == checkPassword || !checkPassword.trimmingCharacters(in: .whitespaces).isEmpty else {
+                showAlert(title: "Password do not match or cannot be empty.")
                 return false
             }
         }

@@ -7,8 +7,9 @@
 import SwiftUI
 
 
-struct LoginView: View {
-    @StateObject var viewModel = LoginViewModel()
+struct OnBoardingView: View {
+    @StateObject var viewModel = OnBoardingViewModel()
+    
     @EnvironmentObject var locationManager: LocationManager
     
     let socialIcons = ["google", "wechat", "linkedin"]
@@ -19,6 +20,9 @@ struct LoginView: View {
             ZStack {
                 ZStack {
                     switch viewModel.onboardingState {
+                    case "welcome":
+                        welcomeSection
+                            .transition(viewModel.transition)
                     case "login":
                         loginSection
                             .transition(viewModel.transition)
@@ -30,28 +34,48 @@ struct LoginView: View {
                             .foregroundColor(Color("colorBackground")) }
                 }
                 
-                VStack {
-                    Spacer()
-                    if viewModel.onboardingState == "login" || viewModel.onboardingState == "signUp" {
-                        SZButton(title: viewModel.onboardingState.capitalized, foregroundColor: Color.white, background: Color("colorPrimary"), action: viewModel.handleSubmitButton)
-                            .font(.headline)
-                    }
-                }
-                .padding(10)
             }
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text(viewModel.alertMsg))
             }
-            if viewModel.showLocationRequest {
-                LocationRequestView()
-            }
+//            if viewModel.showLocationRequest {
+//                LocationRequestView()
+//            }
         }
     }
 }
 
 
 // MARK: COMPONENTS
-extension LoginView {
+extension OnBoardingView {
+    private var welcomeSection: some View {
+        VStack(spacing: 40) {
+            Spacer()
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+            Text("SyncZone")
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+                .foregroundColor(Color("colorPrimary"))
+                .overlay(
+                    Capsule(style: .continuous)
+                        .frame(height: 3)
+                        .offset(y: 5)
+                        .foregroundColor(Color("colorPrimary")), alignment: .bottom
+                )
+            Text("Sync Time, Connect Minds")
+                .fontWeight(.medium)
+                .foregroundColor(Color("colorPrimary"))
+            Spacer()
+            Spacer()
+        }
+        .onAppear {
+            viewModel.handleContinue()
+        }
+        .padding(30)
+    }
    
     private var loginSection: some View {
         ZStack {
@@ -60,11 +84,14 @@ extension LoginView {
             
             VStack(spacing: 25) {
                 Spacer()
-                
+                Spacer()
               
                 InputFieldView(title: "Email: ", placeholder: "Enter your email...", text: $viewModel.email, isSecure: false)
                 
                 InputFieldView(title: "Password: ", placeholder: "Enter your password...", text: $viewModel.password, isSecure: true)
+                
+                SZButton(title: viewModel.onboardingState.capitalized, foregroundColor: Color.white, background: Color("colorPrimary"), action: viewModel.Login)
+                    .font(.headline)
 
                 HStack {
                     Text("New around here? ")
@@ -110,13 +137,37 @@ extension LoginView {
             
             VStack(spacing: 25) {
                 Spacer()
+                InputFieldView(title: "Name: ", placeholder: "Enter your name...", text: $viewModel.name, isSecure: false)
                 
                 InputFieldView(title: "Email: ", placeholder: "Enter your email...", text: $viewModel.email, isSecure: false)
                 
                 InputFieldView(title: "Password: ", placeholder: "Enter your password...", text: $viewModel.password, isSecure: true)
                 
                 InputFieldView(title: "Check Password: ", placeholder: "Enter your password again...", text: $viewModel.checkPassword, isSecure: true)
-
+                
+                SZButton(title: viewModel.onboardingState.capitalized, foregroundColor: Color.white, background: Color("colorPrimary"), action: viewModel.SignUp)
+                    .font(.headline)
+                
+                HStack {
+                    Text("Already have an account?")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    Text("Login")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(height: 55)
+                        .frame(minWidth: 70)
+                        .cornerRadius(10)
+                        .overlay(
+                            Capsule(style: .continuous)
+                                .frame(height: 1)
+                                .offset(y: -10)
+                                .foregroundColor(.white), alignment: .bottom
+                        )
+                        .onTapGesture {
+                            viewModel.handleLoginButton()
+                        }
+                }
                 Spacer()
                 Spacer()
             }
@@ -127,5 +178,5 @@ extension LoginView {
 
 
 #Preview {
-    LoginView()
+    OnBoardingView()
 }

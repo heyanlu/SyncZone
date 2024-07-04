@@ -39,12 +39,12 @@ struct LocationRequestView: View {
             }
         }
         .foregroundColor(.orange)
-        .background(
-            NavigationLink(destination: MainTabView(), isActive: $isAuthenticated) {
-                EmptyView()
-            }
-            .hidden()
-        )
+//        .background(
+//            NavigationLink(destination: MainTabView(), isActive: $isAuthenticated) {
+//                EmptyView()
+//            }
+//            .hidden()
+//        )
     }
 }
 

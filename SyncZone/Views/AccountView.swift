@@ -8,11 +8,18 @@ import MapKit
 import SwiftUI
 
 struct AccountView: View {
+    
     @AppStorage("username") var currentUserName: String?
     @AppStorage("password") var currentPassword: String?
     @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     
     @ObservedObject var locationManager = LocationManager.shared
+    
+    @StateObject var viewMode = AccountViewModel()
+
+    init() {
+        
+    }
     
     var body: some View {
         NavigationView {

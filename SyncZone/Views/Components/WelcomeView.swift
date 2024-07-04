@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    var onContinue: () -> Void
+
     var body: some View {
         VStack(spacing: 40) {
             Spacer()
@@ -30,11 +32,19 @@ struct WelcomeView: View {
                 .foregroundColor(Color("colorPrimary"))
             Spacer()
             Spacer()
+//            Text("Continuing automatically...")
+//                .font(.title2)
+//                .foregroundColor(.gray)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                onContinue()
+            }
         }
         .padding(30)
     }
 }
 
 #Preview {
-    WelcomeView()
+    WelcomeView(onContinue: {})
 }

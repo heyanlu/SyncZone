@@ -4,21 +4,26 @@
 //
 //  Created by YL He on 6/28/24.
 //
-import Firebase
+import FirebaseCore
 import SwiftUI
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
+}
 
 @main
 struct SyncZoneApp: App {
-    init(){
-        FirebaseApp.configure()
-        print("Connect test")
-    }
-  
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     var body: some Scene {
         WindowGroup {
-            IntroView()
-            //MapView()
-            
+            MainView()            
         }
     }
 }
