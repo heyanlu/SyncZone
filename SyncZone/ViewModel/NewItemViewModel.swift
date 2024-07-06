@@ -140,12 +140,6 @@ class NewItemViewModel: ObservableObject {
     }
     
     
-//    func selectCity(_ selectedCity: String) {
-//        city = selectedCity
-//        addCity(selectedCity)
-//    }
-    
-    
     func deleteCity(_ city: String) {
         print("city to be delete: ", city)
 

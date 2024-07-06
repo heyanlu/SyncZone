@@ -8,19 +8,13 @@ import MapKit
 import SwiftUI
 
 struct AccountView: View {
-    
     @AppStorage("username") var currentUserName: String?
     @AppStorage("password") var currentPassword: String?
     @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     
     @ObservedObject var locationManager = LocationManager.shared
-    
     @StateObject var viewMode = AccountViewModel()
 
-    init() {
-        
-    }
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -30,8 +24,13 @@ struct AccountView: View {
                     .frame(width: 150, height: 150)
                     .foregroundColor(Color("colorPrimary"))
                 
-                Text(currentUserName ?? "Your name here")
-                    .font(.title)
+                if let userName = currentUserName, !userName.isEmpty {
+                    Text(userName)
+                        .font(.title)
+                } else {
+                    Text("Your name here")
+                        .font(.title)
+                }
                 
                 LocationView()
                     .font(.headline)

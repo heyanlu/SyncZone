@@ -14,11 +14,13 @@ import SwiftUI
 class SyncZoneViewModel: ObservableObject {
     @Published var showingNewItemView = false
     @Published var showingEditItemView = false
+    @Published var showingItemView = false
     
     @Published var listName = ""
     @Published var city = ""
     @Published var startTime = Date()
     @Published var endTime = Date()
+    @Published var isLiked = false
     
     @Published var selectedCities: [String] = []
     @Published var autocompleteCities: [String] = []
@@ -26,9 +28,11 @@ class SyncZoneViewModel: ObservableObject {
     @Published var selectedItem: SyncZoneListItem?
     @Published var items: [SyncZoneListItem] = []
     @Published var itemToEdit: SyncZoneListItem?
+
     
     @Published var showAlert: Bool = false
     @Published var alertMsg: String = ""
+    
     
     
     let allCities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"]
@@ -87,7 +91,6 @@ class SyncZoneViewModel: ObservableObject {
             return
         }
 
-
         //create data model
         let newId = UUID().uuidString
         let newList = SyncZoneListItem(
@@ -118,7 +121,6 @@ class SyncZoneViewModel: ObservableObject {
         } catch let error {
             print("Error writing document: \(error)")
         }
-
 
         selectedCities.append(city)
         city = ""

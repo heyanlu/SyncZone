@@ -11,7 +11,7 @@ import Foundation
 class MainViewModel: ObservableObject {
     @Published var currentUserId: String = ""
     //listener for authentication state changes
-    private var handler: AuthStateDidChangeListenerHandle?
+    @Published var handler: AuthStateDidChangeListenerHandle?
     
     init() {
         self.handler = Auth.auth().addStateDidChangeListener{[weak self]_, user in

@@ -8,23 +8,16 @@
 import SwiftUI
 
 struct MainView: View {
-//    @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
-//    @AppStorage("showLocationRequest") var showLocationRequest: Bool = false
-    
+    @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     @StateObject var viewModel = MainViewModel()
 
     var body: some View {
-        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
+        if isAuthenticated, viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
             TabView {
                 SyncZoneView(userId: viewModel.currentUserId)
                     .tabItem {
                         Image(systemName: "clock.badge.checkmark")
                         Text("Sync")
-                    }
-                ChatGroupView()
-                    .tabItem {
-                        Image(systemName: "message")
-                        Text("Chat")
                     }
                 AccountView()
                     .tabItem {
@@ -35,6 +28,7 @@ struct MainView: View {
             .accentColor(Color("colorPrimary"))
         } else {
             OnBoardingView()
+                .environmentObject(viewModel)
         }
     }
     

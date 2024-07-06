@@ -8,8 +8,10 @@ import SwiftUI
 
 
 struct OnBoardingView: View {
-    @StateObject var viewModel = OnBoardingViewModel()
+    @AppStorage("username") var currentUserName: String?
+    @AppStorage("password") var currentPassword: String?
     
+    @StateObject var viewModel = OnBoardingViewModel()
     @EnvironmentObject var locationManager: LocationManager
     
     let socialIcons = ["google", "wechat", "linkedin"]
@@ -38,11 +40,23 @@ struct OnBoardingView: View {
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text(viewModel.alertMsg))
             }
-//            if viewModel.showLocationRequest {
-//                LocationRequestView()
-//            }
         }
+        .onChange(of: viewModel.isAuthenticated) { isAuthenticated in
+            if isAuthenticated {
+                viewModel.redirectToMainView = true
+            }
+        }
+        .background(
+            NavigationLink(
+                destination: MainView(),
+                isActive: $viewModel.redirectToMainView,
+                label: {
+                    EmptyView()
+                })
+                .hidden()
+        )
     }
+    
 }
 
 
@@ -144,6 +158,7 @@ extension OnBoardingView {
                 InputFieldView(title: "Password: ", placeholder: "Enter your password...", text: $viewModel.password, isSecure: true)
                 
                 InputFieldView(title: "Check Password: ", placeholder: "Enter your password again...", text: $viewModel.checkPassword, isSecure: true)
+                
                 
                 SZButton(title: viewModel.onboardingState.capitalized, foregroundColor: Color.white, background: Color("colorPrimary"), action: viewModel.SignUp)
                     .font(.headline)

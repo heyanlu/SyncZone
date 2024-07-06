@@ -110,4 +110,5 @@ struct UpdateItemView: View {
 
 #Preview {
     UpdateItemView(item: .constant(SyncZoneListItem(id: "", listName: "", selectedCities: [], startTime: Date(), endTime: Date(), createdDate: Date().timeIntervalSince1970)), viewModel: SyncZoneViewModel(userId: "sampleUserId"))
+    
 }

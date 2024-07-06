@@ -10,7 +10,22 @@ import Foundation
 
 class LocationManager: NSObject, ObservableObject {
     private let manager = CLLocationManager()
-    @Published var userLocation: CLLocation?
+    
+    //ensure location update
+    @Published var userLocation: CLLocation? {
+        didSet {
+            guard let location = userLocation else { return }
+            getPlace(for: location) { placemark in
+                self.placemark = placemark
+                self.currentTime = self.getCurrentTime(for: placemark)
+                if let placemark = placemark {
+                    print("DEBUG: Placemark updated - \(placemark.locality ?? "Unknown location")")
+                }
+            }
+        }
+    }
+    
+    
     @Published var placemark: CLPlacemark?
     @Published var currentTime: String?
     static let shared = LocationManager()
@@ -47,7 +62,17 @@ class LocationManager: NSObject, ObservableObject {
             
             completion(placemark)
         }
-    }   
+    } 
+    
+    
+    func getCurrentTime(for placemark: CLPlacemark?) -> String? {
+        guard let placemark = placemark else { return nil }
+        let timeZone = placemark.timeZone ?? TimeZone.current
+        let formatter = DateFormatter()
+        formatter.timeZone = timeZone
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.string(from: Date())
+    }
 }
 
 
@@ -77,6 +102,7 @@ extension LocationManager: CLLocationManagerDelegate {
             return
         }
         self.userLocation = location
+
     }
 }
 
