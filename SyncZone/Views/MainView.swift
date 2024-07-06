@@ -19,6 +19,11 @@ struct MainView: View {
                         Image(systemName: "clock.badge.checkmark")
                         Text("Sync")
                     }
+                ChatView()
+                    .tabItem {
+                        Image(systemName: "ellipsis.message")
+                        Text("Chat")
+                    }
                 AccountView()
                     .tabItem {
                         Image(systemName: "person")

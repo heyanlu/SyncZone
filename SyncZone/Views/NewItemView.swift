@@ -116,7 +116,6 @@ struct NewItemView: View {
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text(viewModel.alertMsg))
             }
-            .padding()
         }
     }
     

@@ -13,7 +13,6 @@ struct AccountView: View {
     @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
     
     @ObservedObject var locationManager = LocationManager.shared
-    @StateObject var viewMode = AccountViewModel()
 
     var body: some View {
         NavigationView {

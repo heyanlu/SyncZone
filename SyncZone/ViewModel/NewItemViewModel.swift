@@ -23,7 +23,29 @@ class NewItemViewModel: ObservableObject {
     @Published var alertMsg: String = ""
     @Published var showAlert: Bool = false
     
-    let allCities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"]
+    //update API later
+    let allCities = [
+        "Tokyo", "New York", "São Paulo", "Seoul", "Mexico City",
+        "Jakarta", "Shanghai", "Lagos", "Delhi", "Cairo",
+        "Mumbai", "Beijing", "Dhaka", "Osaka", "Karachi",
+        "Manila", "Moscow", "Istanbul", "Bangkok", "Lahore",
+        "Rio de Janeiro", "Guangzhou", "Kinshasa", "Los Angeles", "Tianjin",
+        "Bengaluru", "Paris", "Chennai", "Lima", "London",
+        "New Delhi", "Ho Chi Minh City", "Shenzhen", "Hyderabad", "Nanjing",
+        "Ahmedabad", "Kolkata", "Bangalore", "Tehran", "Shenyang",
+        "Bogotá", "Wuhan", "Chongqing", "Chengdu", "Dongguan",
+        "Ningbo", "Hong Kong", "Baghdad", "Changsha", "Hanoi",
+        "Riyadh", "Singapore", "Santiago", "Saint Petersburg", "Surat",
+        "Madrid", "Toronto", "Pune", "Jaipur", "Miami",
+        "Dallas", "Philadelphia", "Atlanta", "Barcelona", "Houston",
+        "Phoenix", "San Antonio", "San Diego", "Dallas", "San Jose",
+        "San Francisco", "Seattle", "Boston", "Miami", "Washington D.C.",
+        "Denver", "Las Vegas", "Austin", "Minneapolis", "Detroit",
+        "Orlando", "Tampa", "St. Louis", "Salt Lake City", "Nashville",
+        "Indianapolis", "Kansas City", "Charlotte", "Columbus", "Raleigh",
+        "Pittsburgh", "Cincinnati", "Milwaukee", "Jacksonville", "Oklahoma City",
+        "Memphis", "Louisville", "Richmond", "New Orleans", "Buffalo"
+    ]
     
     private var cancellables: Set<AnyCancellable> = []
     
