@@ -37,7 +37,6 @@ struct ItemViewView: View {
             )
             .foregroundColor(.white)
 
-            
             // Group Information
             VStack(alignment: .leading) {
                 HStack {
@@ -144,5 +143,5 @@ struct ItemViewView: View {
 }
 
 #Preview {
-    ItemViewView(item: .constant(SyncZoneListItem(id: "1", listName: "Sample List", selectedCities: ["New York", "London"], startTime: Date(), endTime: Date(), createdDate: Date().timeIntervalSince1970)), viewModel: ItemViewViewModel(), showingItemView: .constant(true))
+    ItemViewView(item: .constant(SyncZoneListItem(id: "1", listName: "Sample List", selectedCities: ["New York, US", "London, UK"], startTime: Date(), endTime: Date(), createdDate: Date().timeIntervalSince1970)), viewModel: ItemViewViewModel(), showingItemView: .constant(true))
 }

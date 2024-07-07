@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		67125C6D2C3888C4004A77A5 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67125C6C2C3888C4004A77A5 /* SearchBarView.swift */; };
+		67125C7B2C39C373004A77A5 /* ChatTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67125C7A2C39C373004A77A5 /* ChatTitleRow.swift */; };
+		67125C7F2C39DBA0004A77A5 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67125C7E2C39DBA0004A77A5 /* config.plist */; };
+		67125C852C39F26B004A77A5 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67125C842C39F26B004A77A5 /* AppConfig.swift */; };
+		67125C872C39F339004A77A5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67125C862C39F339004A77A5 /* Location.swift */; };
+		67125C892C39F358004A77A5 /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67125C882C39F358004A77A5 /* LocationResponse.swift */; };
+		67125C8B2C3A08F9004A77A5 /* config2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67125C8A2C3A08F9004A77A5 /* config2.plist */; };
+		67125C8D2C3A0FF6004A77A5 /* TimeZoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67125C8C2C3A0FF6004A77A5 /* TimeZoneResponse.swift */; };
 		67FF83B82C2FA70900721457 /* SyncZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FF83B72C2FA70900721457 /* SyncZoneApp.swift */; };
 		67FF83BC2C2FA70A00721457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67FF83BB2C2FA70A00721457 /* Assets.xcassets */; };
 		67FF83BF2C2FA70A00721457 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67FF83BE2C2FA70A00721457 /* Preview Assets.xcassets */; };
@@ -64,6 +71,13 @@
 
 /* Begin PBXFileReference section */
 		67125C6C2C3888C4004A77A5 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		67125C7A2C39C373004A77A5 /* ChatTitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleRow.swift; sourceTree = "<group>"; };
+		67125C7E2C39DBA0004A77A5 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		67125C842C39F26B004A77A5 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		67125C862C39F339004A77A5 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		67125C882C39F358004A77A5 /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
+		67125C8A2C3A08F9004A77A5 /* config2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config2.plist; sourceTree = "<group>"; };
+		67125C8C2C3A0FF6004A77A5 /* TimeZoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneResponse.swift; sourceTree = "<group>"; };
 		67FF83B42C2FA70900721457 /* SyncZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FF83B72C2FA70900721457 /* SyncZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncZoneApp.swift; sourceTree = "<group>"; };
 		67FF83BB2C2FA70A00721457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +93,7 @@
 		67FF83EB2C30BF7E00721457 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		67FF83ED2C30C9EA00721457 /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
 		67FF83EF2C30CA0900721457 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		67FF83F32C30CD0400721457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		67FF83F32C30CD0400721457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67FF83F92C320B4B00721457 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		67FF83FB2C320D1B00721457 /* SyncZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncZoneView.swift; sourceTree = "<group>"; };
 		67FF84002C321FB200721457 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -153,15 +167,17 @@
 		67FF83B62C2FA70900721457 /* SyncZone */ = {
 			isa = PBXGroup;
 			children = (
+				67125C7E2C39DBA0004A77A5 /* config.plist */,
 				67FF84152C3328FF00721457 /* GoogleService-Info.plist */,
 				67FF83FF2C321FA200721457 /* Model */,
 				67FF83F62C31F9D200721457 /* ViewModel */,
 				67FF83F52C31F9B700721457 /* Views */,
-				67FF83F32C30CD0400721457 /* Info.plist */,
 				67FF83B72C2FA70900721457 /* SyncZoneApp.swift */,
+				67FF83F32C30CD0400721457 /* Info.plist */,
 				67FF83BB2C2FA70A00721457 /* Assets.xcassets */,
 				67FF83BD2C2FA70A00721457 /* Preview Content */,
 				67FF84242C33438200721457 /* Extensions.swift */,
+				67125C8A2C3A08F9004A77A5 /* config2.plist */,
 			);
 			path = SyncZone;
 			sourceTree = "<group>";
@@ -217,6 +233,7 @@
 				67FF84292C33788000721457 /* SyncZoneViewModel.swift */,
 				67FF842F2C337A2000721457 /* NewItemViewModel.swift */,
 				67FF84432C376F3C00721457 /* ItemViewViewModel.swift */,
+				67125C842C39F26B004A77A5 /* AppConfig.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -226,6 +243,9 @@
 			children = (
 				67FF84002C321FB200721457 /* User.swift */,
 				67FF84022C321FC700721457 /* SyncZoneListItem.swift */,
+				67125C862C39F339004A77A5 /* Location.swift */,
+				67125C882C39F358004A77A5 /* LocationResponse.swift */,
+				67125C8C2C3A0FF6004A77A5 /* TimeZoneResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +259,7 @@
 				67FF840F2C327AF300721457 /* SZButton.swift */,
 				67FF83F92C320B4B00721457 /* MainTabView.swift */,
 				67125C6C2C3888C4004A77A5 /* SearchBarView.swift */,
+				67125C7A2C39C373004A77A5 /* ChatTitleRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -357,7 +378,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67125C7F2C39DBA0004A77A5 /* config.plist in Resources */,
 				67FF83BF2C2FA70A00721457 /* Preview Assets.xcassets in Resources */,
+				67125C8B2C3A08F9004A77A5 /* config2.plist in Resources */,
 				67FF83BC2C2FA70A00721457 /* Assets.xcassets in Resources */,
 				67FF84162C3328FF00721457 /* GoogleService-Info.plist in Resources */,
 			);
@@ -384,15 +407,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67125C852C39F26B004A77A5 /* AppConfig.swift in Sources */,
 				67FF83E52C2FAA7C00721457 /* OnBoardingView.swift in Sources */,
 				67FF83EC2C30BF7E00721457 /* LocationView.swift in Sources */,
 				67FF84102C327AF300721457 /* SZButton.swift in Sources */,
 				67FF83E72C2FAA8F00721457 /* AccountView.swift in Sources */,
+				67125C8D2C3A0FF6004A77A5 /* TimeZoneResponse.swift in Sources */,
 				67FF83F02C30CA0900721457 /* LocationManager.swift in Sources */,
+				67125C872C39F339004A77A5 /* Location.swift in Sources */,
 				67FF84252C33438200721457 /* Extensions.swift in Sources */,
 				67FF84462C376F5000721457 /* ItemViewView.swift in Sources */,
 				67FF84442C376F3C00721457 /* ItemViewViewModel.swift in Sources */,
 				67FF83FC2C320D1B00721457 /* SyncZoneView.swift in Sources */,
+				67125C7B2C39C373004A77A5 /* ChatTitleRow.swift in Sources */,
 				67FF83B82C2FA70900721457 /* SyncZoneApp.swift in Sources */,
 				67FF84012C321FB200721457 /* User.swift in Sources */,
 				67FF84302C337A2000721457 /* NewItemViewModel.swift in Sources */,
@@ -401,6 +428,7 @@
 				67FF843A2C347CFC00721457 /* SyncZoneListItemView.swift in Sources */,
 				67FF83E32C2FA81E00721457 /* MainView.swift in Sources */,
 				67FF84342C339E0400721457 /* NewItemView.swift in Sources */,
+				67125C892C39F358004A77A5 /* LocationResponse.swift in Sources */,
 				67FF83FA2C320B4B00721457 /* MainTabView.swift in Sources */,
 				67FF84402C35B01000721457 /* UpdateItemView.swift in Sources */,
 				67FF84122C330E2400721457 /* InputFieldView.swift in Sources */,

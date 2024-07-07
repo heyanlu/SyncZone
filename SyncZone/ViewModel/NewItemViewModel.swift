@@ -7,7 +7,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 import Foundation
-import Combine 
+import Combine
 
 
 
@@ -16,39 +16,16 @@ class NewItemViewModel: ObservableObject {
     @Published var city = ""
     @Published var startTime = Date()
     @Published var endTime = Date()
-    
+
     @Published var selectedCities: [String] = []
     @Published var autocompleteCities: [String] = []
 
     @Published var alertMsg: String = ""
     @Published var showAlert: Bool = false
-    
-    //update API later
-    let allCities = [
-        "Tokyo", "New York", "São Paulo", "Seoul", "Mexico City",
-        "Jakarta", "Shanghai", "Lagos", "Delhi", "Cairo",
-        "Mumbai", "Beijing", "Dhaka", "Osaka", "Karachi",
-        "Manila", "Moscow", "Istanbul", "Bangkok", "Lahore",
-        "Rio de Janeiro", "Guangzhou", "Kinshasa", "Los Angeles", "Tianjin",
-        "Bengaluru", "Paris", "Chennai", "Lima", "London",
-        "New Delhi", "Ho Chi Minh City", "Shenzhen", "Hyderabad", "Nanjing",
-        "Ahmedabad", "Kolkata", "Bangalore", "Tehran", "Shenyang",
-        "Bogotá", "Wuhan", "Chongqing", "Chengdu", "Dongguan",
-        "Ningbo", "Hong Kong", "Baghdad", "Changsha", "Hanoi",
-        "Riyadh", "Singapore", "Santiago", "Saint Petersburg", "Surat",
-        "Madrid", "Toronto", "Pune", "Jaipur", "Miami",
-        "Dallas", "Philadelphia", "Atlanta", "Barcelona", "Houston",
-        "Phoenix", "San Antonio", "San Diego", "Dallas", "San Jose",
-        "San Francisco", "Seattle", "Boston", "Miami", "Washington D.C.",
-        "Denver", "Las Vegas", "Austin", "Minneapolis", "Detroit",
-        "Orlando", "Tampa", "St. Louis", "Salt Lake City", "Nashville",
-        "Indianapolis", "Kansas City", "Charlotte", "Columbus", "Raleigh",
-        "Pittsburgh", "Cincinnati", "Milwaukee", "Jacksonville", "Oklahoma City",
-        "Memphis", "Louisville", "Richmond", "New Orleans", "Buffalo"
-    ]
-    
+
     private var cancellables: Set<AnyCancellable> = []
-    
+    private let apiKey = AppConfig.getAPIKey() ?? ""
+
     init() {
         $city
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
@@ -57,21 +34,65 @@ class NewItemViewModel: ObservableObject {
                     self?.autocompleteCities = []
                     return
                 }
-                self?.autocompleteCities = self?.allCities.filter { $0.lowercased().contains(searchText.lowercased()) } ?? []
+                self?.fetchCitySuggestions(query: searchText)
             }
             .store(in: &cancellables)
     }
-    
+
+    // API
+    func fetchCitySuggestions(query: String) {
+        guard !query.isEmpty else {
+            autocompleteCities = []
+            return
+        }
+
+        let urlString = "https://api.api-ninjas.com/v1/city?name=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
+
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL:", urlString)
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.addValue(apiKey, forHTTPHeaderField: "X-Api-Key")
+
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForResource = 30
+
+        let session = URLSession(configuration: sessionConfig)
+        let task = session.dataTask(with: request) { [weak self] data, response, error in
+            if let error = error {
+                print("Error fetching city suggestions:", error)
+                return
+            }
+
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                let locations = try decoder.decode([Location].self, from: data)
+                DispatchQueue.main.async {
+                    self?.autocompleteCities = locations.map { "\($0.name)" }
+                }
+            } catch {
+                print("Error parsing JSON:", error)
+            }
+        }
+        task.resume()
+    }
+
     func save() {
         guard canSave else { return }
-        
-        //get userid
+
+        // Get user ID
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
-        
-        
-        //create data model
+
+        // Create data model
         let newId = UUID().uuidString
         let newList = SyncZoneListItem(
             id: newId,
@@ -81,11 +102,10 @@ class NewItemViewModel: ObservableObject {
             endTime: endTime,
             createdDate: Date().timeIntervalSince1970
         )
-        
-        
-        //save
+
+        // Save to Firestore
         let db = Firestore.firestore()
-        
+
         do {
             try db.collection("users")
                 .document(userId)
@@ -101,55 +121,44 @@ class NewItemViewModel: ObservableObject {
         } catch let error {
             print("Error writing document: \(error)")
         }
-        
-        
+
         selectedCities.append(city)
         city = ""
         selectedCities.removeAll()
     }
-    
+
     var canSave: Bool {
         guard !listName.trimmingCharacters(in: .whitespaces).isEmpty || selectedCities.count > 0 else {
             showAlert(title: "Please fill in all fields and select due date.")
             return false
         }
-        
+
         guard startTime < endTime else {
             showAlert(title: "Start time cannot be later than end time.")
             return false
         }
         return true
     }
-    
-//    private func fetchAutocompleteCities(for searchText: String) {
-//        fetchCities { [weak self] cities in
-//            DispatchQueue.main.async {
-//                self?.autocompleteCities = cities?.filter {
-//                    $0.lowercased().contains(searchText.lowercased())
-//                } ?? []
-//            }
-//        }
-//    }
-    
+
     var canAdd: Bool {
         let maxCities = 5
         let normalizedCity = city.lowercased()
-        
+
         guard selectedCities.count < maxCities else {
             showAlert(title: "Reached the maximum number of cities in one group.")
             return false
         }
-        
+
         guard !selectedCities.map({ $0.lowercased() }).contains(normalizedCity) else {
-            showAlert(title: "city already selected.")
+            showAlert(title: "City already selected.")
             return false
         }
-        
+
         return true
     }
-    
+
     func addCity(_ city: String) {
-        print("city to be added: ", city)
+        print("City to be added: ", city)
 
         let normalizedCity = city.lowercased()
         guard !selectedCities.map({ $0.lowercased() }).contains(normalizedCity) else {
@@ -160,30 +169,26 @@ class NewItemViewModel: ObservableObject {
         autocompleteCities = []
         self.city = ""
     }
-    
-    
+
     func deleteCity(_ city: String) {
-        print("city to be delete: ", city)
+        print("City to be deleted: ", city)
 
         if let index = selectedCities.firstIndex(of: city) {
             selectedCities.remove(at: index)
         }
-        print("city index: ", index)
+        print("City index: ", index)
     }
-    
+
     func delete(indexSet: IndexSet) {
         let indicesToDelete = Array(indexSet)
-        
+
         for index in indicesToDelete.sorted(by: >) {
             selectedCities.remove(at: index)
         }
     }
 
-    
-    
     func showAlert(title: String) {
         alertMsg = title
         showAlert = true
     }
 }
-
