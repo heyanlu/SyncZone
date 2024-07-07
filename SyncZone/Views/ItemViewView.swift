@@ -94,7 +94,7 @@ struct ItemViewView: View {
             
             // Suggested Chatting Time
             VStack(alignment: .leading) {
-                Text("Overlapping Time With Your Location:")
+                Text("Overlapping Time With Current Location:")
                     .font(.headline)
                     .padding(.top, 10)
                     .foregroundColor(Color("colorPrimary"))

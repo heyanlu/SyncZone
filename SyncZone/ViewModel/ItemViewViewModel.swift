@@ -109,7 +109,9 @@ class ItemViewViewModel: NSObject, ObservableObject {
        "Louisville": "America/New_York",
        "Richmond": "America/New_York",
        "New Orleans": "America/Chicago",
-       "Buffalo": "America/New_York"
+       "Buffalo": "America/New_York",
+        "Edinburgh": "Europe/London"
+        
     ]
 
     
@@ -210,31 +212,32 @@ class ItemViewViewModel: NSObject, ObservableObject {
             return nil
         }
         
-        let calendar = Calendar.current
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        // Convert start and end times to UTC
         let start1UTC = start1.addingTimeInterval(TimeInterval(-tz1.secondsFromGMT(for: start1)))
         let end1UTC = end1.addingTimeInterval(TimeInterval(-tz1.secondsFromGMT(for: end1)))
         
         let start2UTC = start2.addingTimeInterval(TimeInterval(-tz2.secondsFromGMT(for: start2)))
         let end2UTC = end2.addingTimeInterval(TimeInterval(-tz2.secondsFromGMT(for: end2)))
         
-        // Find overlap in UTC
         let overlapStartUTC = max(start1UTC, start2UTC)
-        let overlapEndUTC = min(end1UTC, end2UTC)
+        var overlapEndUTC = min(end1UTC, end2UTC) // Declare overlapEndUTC as var to modify it
         
         guard overlapStartUTC < overlapEndUTC else {
             print("No overlap period")
             return "No overlap period"
         }
         
-        let overlapStartLocal1 = overlapStartUTC.addingTimeInterval(TimeInterval(tz1.secondsFromGMT(for: overlapStartUTC)))
-        let overlapEndLocal1 = overlapEndUTC.addingTimeInterval(TimeInterval(tz1.secondsFromGMT(for: overlapEndUTC)))
+        if overlapStartUTC > overlapEndUTC {
+            overlapEndUTC.addTimeInterval(24 * 60 * 60)
+        }
         
-        let start1String = dateFormatter.string(from: overlapStartLocal1)
-        let end1String = dateFormatter.string(from: overlapEndLocal1)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let overlapStartLocal = overlapStartUTC.addingTimeInterval(TimeInterval(tz1.secondsFromGMT(for: overlapStartUTC)))
+        let overlapEndLocal = overlapEndUTC.addingTimeInterval(TimeInterval(tz1.secondsFromGMT(for: overlapEndUTC)))
+        
+        let start1String = dateFormatter.string(from: overlapStartLocal)
+        let end1String = dateFormatter.string(from: overlapEndLocal)
         
         return "\(start1String) to \(end1String)"
     }
