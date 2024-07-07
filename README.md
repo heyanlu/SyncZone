@@ -48,5 +48,5 @@ https://github.com/heyanlu/SyncZone
 ![structure](https://github.com/heyanlu/SyncZone/assets/116776352/4c5fdb15-be7b-4466-a836-b0687c8777d4)
 
 ## Screenshots
-![Blank diagram](https://github.com/heyanlu/SyncZone/assets/116776352/2107be7d-bfbb-464c-b960-9dcf70f36bd6)
+![Blank diagram](https://github.com/heyanlu/SyncZone/assets/116776352/52b74538-79e8-4391-8a8e-18a22f789d9e)
 
