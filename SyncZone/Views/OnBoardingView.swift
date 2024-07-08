@@ -14,7 +14,6 @@ struct OnBoardingView: View {
     @StateObject var viewModel = OnBoardingViewModel()
     @EnvironmentObject var locationManager: LocationManager
     
-    let socialIcons = ["google", "wechat", "linkedin"]
     let buttons = ["Login", "SignUp", "Submit"]
     
     var body: some View {
@@ -129,15 +128,6 @@ extension OnBoardingView {
                 }
                 
                 Spacer()
-                
-                HStack(spacing: 40) {
-                    ForEach(socialIcons, id: \.self) { iconName in
-                        Image(iconName)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                    }
-                }
                 Spacer()
             }
             .padding(30)

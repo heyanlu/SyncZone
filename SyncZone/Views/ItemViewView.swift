@@ -94,7 +94,7 @@ struct ItemViewView: View {
             
             // Suggested Chatting Time
             VStack(alignment: .leading) {
-                Text("Overlapping Time With Current Location:")
+                Text("Suggested Meeting Time:")
                     .font(.headline)
                     .padding(.top, 10)
                     .foregroundColor(Color("colorPrimary"))
@@ -106,8 +106,6 @@ struct ItemViewView: View {
                             start1: item.startTime,
                             end1: item.endTime,
                             city1: currentCity,
-                            start2: item.startTime,
-                            end2: item.endTime,
                             city2: city
                         ) {
                             Text("\(city): \(overlapTime)")

@@ -11,6 +11,8 @@ import CoreLocation
 
 class ItemViewViewModel: NSObject, ObservableObject {
     
+    //Two Api have conficts over some cities, like "London, UK' in one API data, "London, GB" in another,
+    //so I comment out the API part below.
     let cityToTimeZone: [String: String] = [
         "Tokyo": "Asia/Tokyo",
        "New York": "America/New_York",
@@ -128,7 +130,6 @@ class ItemViewViewModel: NSObject, ObservableObject {
 //    func fetchTimezones(for city: String) {
 //           guard let escapedCity = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
 //                 let apiURL = URL(string: "\(apiUrl)?apiKey=\(apiKey)&location=\(escapedCity)") else {
-//               print("Invalid API URL")
 //               return
 //           }
 //
@@ -137,12 +138,10 @@ class ItemViewViewModel: NSObject, ObservableObject {
 //
 //           URLSession.shared.dataTask(with: request) { data, response, error in
 //               if let error = error {
-//                   print("Error fetching timezone data: \(error.localizedDescription)")
 //                   return
 //               }
 //
 //               guard let data = data else {
-//                   print("No data returned from API")
 //                   return
 //               }
 //
@@ -160,7 +159,6 @@ class ItemViewViewModel: NSObject, ObservableObject {
 //
 //                   DispatchQueue.main.async {
 //                       self.cityToTimeZone[city] = timezoneResponse.timezone
-//                       print("Timezone added for \(city): \(timezoneResponse.timezone)")
 //                       if let localTime = self.localTime(for: city) {
 //                           print("Local time for \(city): \(localTime)")
 //                       } else {
@@ -205,44 +203,38 @@ class ItemViewViewModel: NSObject, ObservableObject {
            return currentTime
        }
     
-    func calculateOverlap(start1: Date, end1: Date, city1: String, start2: Date, end2: Date, city2: String) -> String? {
+    func calculateOverlap(start1: Date, end1: Date, city1: String, city2: String) -> String? {
         guard let tz1 = TimeZone(identifier: cityToTimeZone[city1] ?? ""),
               let tz2 = TimeZone(identifier: cityToTimeZone[city2] ?? "") else {
             print("Time zone not found for cities: \(city1) or \(city2)")
             return nil
         }
         
-        let start1UTC = start1.addingTimeInterval(TimeInterval(-tz1.secondsFromGMT(for: start1)))
-        let end1UTC = end1.addingTimeInterval(TimeInterval(-tz1.secondsFromGMT(for: end1)))
+        let utcStart1 = start1.addingTimeInterval(TimeInterval(-tz1.secondsFromGMT(for: start1)))
+        let utcEnd1 = end1.addingTimeInterval(TimeInterval(-tz1.secondsFromGMT(for: end1)))
         
-        let start2UTC = start2.addingTimeInterval(TimeInterval(-tz2.secondsFromGMT(for: start2)))
-        let end2UTC = end2.addingTimeInterval(TimeInterval(-tz2.secondsFromGMT(for: end2)))
+        let start2 = utcStart1.addingTimeInterval(TimeInterval(tz2.secondsFromGMT(for: utcStart1)))
+        let end2 = utcEnd1.addingTimeInterval(TimeInterval(tz2.secondsFromGMT(for: utcEnd1)))
         
-        let overlapStartUTC = max(start1UTC, start2UTC)
-        var overlapEndUTC = min(end1UTC, end2UTC) // Declare overlapEndUTC as var to modify it
+        let overlapStart = max(start1, start2)
+        let overlapEnd = min(end1, end2)
         
-        guard overlapStartUTC < overlapEndUTC else {
+        guard overlapStart < overlapEnd else {
             print("No overlap period")
             return "No overlap period"
-        }
-        
-        if overlapStartUTC > overlapEndUTC {
-            overlapEndUTC.addTimeInterval(24 * 60 * 60)
         }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        let overlapStartLocal = overlapStartUTC.addingTimeInterval(TimeInterval(tz1.secondsFromGMT(for: overlapStartUTC)))
-        let overlapEndLocal = overlapEndUTC.addingTimeInterval(TimeInterval(tz1.secondsFromGMT(for: overlapEndUTC)))
+        let overlapStartString = dateFormatter.string(from: overlapStart)
+        let overlapEndString = dateFormatter.string(from: overlapEnd)
         
-        let start1String = dateFormatter.string(from: overlapStartLocal)
-        let end1String = dateFormatter.string(from: overlapEndLocal)
-        
-        return "\(start1String) to \(end1String)"
+        return "\(overlapStartString) to \(overlapEndString)"
     }
 
-    
+
+
     func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
