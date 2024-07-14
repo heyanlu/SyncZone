@@ -22,10 +22,10 @@ SyncZone is a SwiftUI application designed to facilitate time zone synchronizati
 - City-to-Time Zone Mapping: Provides a comprehensive mapping of cities to their respective time zones for quick reference.
 
 ### Build with
-- SwiftUI: Used for building the user interface.
-- Firebase Firestore: Backend database for storing and retrieving user data.
-- CoreLocation: Used for location-based services to fetch user's current location.
-- CityToTimeZone Mapping: Custom mapping to correlate cities with their respective time zones.
+- SwiftUI
+- Firebase Firestore
+- Swift
+- XCode
 
 ## Getting Started 
 To run the application locally:
